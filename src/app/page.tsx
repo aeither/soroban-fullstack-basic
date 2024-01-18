@@ -5,14 +5,16 @@
 
 import { Contract, networks } from "hello-soroban-client";
 export default function HomePage() {
-  const greeter = new Contract({
-    ...networks.testnet,
-    rpcUrl: "https://soroban-testnet.stellar.org", // from https://soroban.stellar.org/docs/reference/rpc#public-rpc-providers
-  });
-
   const doSomething = async () => {
+    console.log("start...");
+    const greeter = new Contract({
+      ...networks.testnet,
+      rpcUrl: "https://soroban-testnet.stellar.org", // from https://soroban.stellar.org/docs/reference/rpc#public-rpc-providers
+    });
     const { result } = await greeter.hello({ to: "Soroban" });
     console.log("🚀 ~ doSomething ~ result:", result);
+
+    console.log("...end");
   };
 
   return (
@@ -22,7 +24,7 @@ export default function HomePage() {
           Test
         </h1>
         <button
-          onClick={doSomething}
+          onClick={() => doSomething()}
           className="rounded-md border bg-slate-700 px-2 py-1"
         >
           Do something
