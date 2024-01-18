@@ -15,5 +15,3 @@ fmt:
 clean:
 	cargo clean
 
-hello:
-	echo "Hello, World"
